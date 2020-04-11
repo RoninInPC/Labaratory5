@@ -5,11 +5,12 @@ typedef struct box {
 	int** Arr;
 	int NumberString;
 	int NumberColumn;
+	Snake snake;
 } Box;
 Box MakeSnakeBox(int NumberString, int NumberColumn);
 void PrintSnakeBox(Box SnakeBox);
-Box SnakeInBox(Box SnakeBox, Snake snake);
-Box MoveSnakeInBox(Box SnakeBox, Snake* snake, Point New);
-Box GroveSnakeInBox(Box SnakeBox, Snake* snake, Point New);
-Box MakeApplePenInBox(Box SnakeBox, Snake snake, Point New);
+Box SnakeInBox(Box SnakeBox);
+Box MoveSnakeInBox(Box SnakeBox, Point New);
+Box GroveSnakeInBox(Box SnakeBox, Point New);
+Box MakeApplePenInBox(Box SnakeBox, Point New);
 #endif

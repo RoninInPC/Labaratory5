@@ -13,16 +13,22 @@ Snake MakeSnake() {
 	return ans;
 }
 Snake Move(Snake snake, Point New) {
-	for (int i = snake.Size-1; i > 0; i--) {
-		snake.Body[i - 1].x = snake.Body[i].x;
-		snake.Body[i - 1].y = snake.Body[i].y;
+	for (int i = 0; i < snake.Size - 1; i++) {
+		snake.Body[i] = snake.Body[i + 1];
 	}
 	snake.Body[snake.Size - 1] = New;
+	snake.Body[snake.Size - 1].Symbol = 88;
+	snake.Body[snake.Size - 2].Symbol = 46;
 	return snake;
 }
 Snake Grove(Snake snake, Point New) {
 	snake.Size++;
-	snake.Body = (Point*)realloc(snake.Body, snake.Size * sizeof(Point));
+	Point* NewBody = (Point*)malloc(snake.Size * sizeof(Point));
+	for (int i = 0; i < snake.Size - 1; i++) {
+		NewBody[i] = snake.Body[i];
+	}
+	free(snake.Body);
+	snake.Body = NewBody;
 	snake.Body[snake.Size - 1] = New;
 	snake.Body[snake.Size - 1].Symbol = 88;
 	snake.Body[snake.Size - 2].Symbol = 46;

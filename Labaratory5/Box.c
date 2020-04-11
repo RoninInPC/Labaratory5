@@ -23,10 +23,16 @@ Box MakeSnakeBox(int NumberString,int NumberColumn) {
 	Ans.Arr = box;
 	Ans.NumberString = NumberString;
 	Ans.NumberColumn = NumberColumn;
+	Ans.snake = MakeSnake();
 	return Ans;
 }
 void PrintSnakeBox(Box SnakeBox) {
-	system("cls");
+	ShowCursor(FALSE);
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD position;
+	position.X = 0;
+	position.Y = 0;
+	SetConsoleCursorPosition(hConsole, position);
 	for (int i = 0; i < SnakeBox.NumberString; i++) {
 		for (int j = 0; j < SnakeBox.NumberColumn; j++) {
 			printf("%c", SnakeBox.Arr[i][j]);
@@ -34,24 +40,26 @@ void PrintSnakeBox(Box SnakeBox) {
 		printf("\n");
 	}
 }
-Box SnakeInBox(Box SnakeBox, Snake snake) {
-	for (int i = 0; i < snake.Size; i++) {
-		SnakeBox.Arr[snake.Body[i].x][snake.Body[i].y] = snake.Body[i].Symbol;
+Box SnakeInBox(Box SnakeBox) {
+	for (int i = 0; i < SnakeBox.snake.Size; i++) {
+		SnakeBox.Arr[SnakeBox.snake.Body[i].x][SnakeBox.snake.Body[i].y] = SnakeBox.snake.Body[i].Symbol;
 	}
 	return SnakeBox;
 }
-Box MoveSnakeInBox(Box SnakeBox, Snake* snake, Point New) {
-	SnakeBox.Arr[snake->Body[0].x][snake->Body[0].y] = 32;
-	*snake = Move(*snake, New);
-	SnakeBox = SnakeInBox(SnakeBox, *snake);
+Box MoveSnakeInBox(Box SnakeBox, Point New) {
+	SnakeBox.Arr[SnakeBox.snake.Body[0].x][SnakeBox.snake.Body[0].y] = 32;
+	SnakeBox.snake = Move(SnakeBox.snake, New);
+	SnakeBox = SnakeInBox(SnakeBox);
+	PrintSnakeBox(SnakeBox);
 	return SnakeBox;
 }
-Box GroveSnakeInBox(Box SnakeBox, Snake* snake, Point New) {
-	*snake = Grove(*snake, New);
-	SnakeBox = SnakeInBox(SnakeBox, *snake);
+Box GroveSnakeInBox(Box SnakeBox, Point New) {
+	SnakeBox.snake = Grove(SnakeBox.snake, New);
+	SnakeBox = SnakeInBox(SnakeBox);
+	PrintSnakeBox(SnakeBox);
 	return SnakeBox;
 }
-Box MakeApplePenInBox(Box SnakeBox, Snake snake, Point New) {
+Box MakeApplePenInBox(Box SnakeBox, Point New) {
 	SnakeBox.Arr[New.x][New.y] = New.Symbol;
 	return SnakeBox;
 }
