@@ -19,5 +19,7 @@ int main() {
 		int t = BrainMoveInBox(&SnakeBox, NewApple);
 		if (t == 0) break;
 	}
+	SnakeBox = GameOver(SnakeBox);
+	PrintSnakeBox(SnakeBox);
 	return 0;
 }

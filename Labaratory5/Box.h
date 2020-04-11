@@ -13,4 +13,5 @@ Box SnakeInBox(Box SnakeBox);
 Box MoveSnakeInBox(Box SnakeBox, Point New);
 Box GroveSnakeInBox(Box SnakeBox, Point New);
 Box MakeApplePenInBox(Box SnakeBox, Point New);
+Box GameOver(Box SnakeBox);
 #endif

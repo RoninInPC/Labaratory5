@@ -63,3 +63,22 @@ Box MakeApplePenInBox(Box SnakeBox, Point New) {
 	SnakeBox.Arr[New.x][New.y] = New.Symbol;
 	return SnakeBox;
 }
+Box GameOver(Box SnakeBox) {
+	SnakeBox.Arr[1][1] = 'G';
+	SnakeBox.Arr[1][2] = 'a';
+	SnakeBox.Arr[1][3] = 'm';
+	SnakeBox.Arr[1][4] = 'e';
+	SnakeBox.Arr[2][1] = 'O';
+	SnakeBox.Arr[2][2] = 'v';
+	SnakeBox.Arr[2][3] = 'e';
+	SnakeBox.Arr[2][4] = 'r';
+	SnakeBox.Arr[3][1] = 'I';
+	SnakeBox.Arr[3][2] = 'I';
+	SnakeBox.Arr[4][1] = 'G';
+	SnakeBox.Arr[4][2] = 'i';
+	SnakeBox.Arr[4][3] = 'v';
+	SnakeBox.Arr[4][4] = 'e';
+	SnakeBox.Arr[5][1] = 'U';
+	SnakeBox.Arr[5][2] = 'p';
+	return SnakeBox;
+}
