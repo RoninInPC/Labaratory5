@@ -95,6 +95,7 @@ Box GameOver2(Box SnakeBox) {
 	SnakeBox.Arr[2][1] = 'O';
 	SnakeBox.Arr[2][2] = 'v';
 	SnakeBox.Arr[2][3] = 'e';
+	SnakeBox.Arr[2][4] = 'r';
 	SnakeBox.Arr[3][1] = 'I';
 	SnakeBox.Arr[3][2] = 'I';
 	SnakeBox.Arr[4][1] = 'T';
