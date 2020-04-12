@@ -1,15 +1,18 @@
 #include "Snake.h"
+Point MakePoint(int x, int y, int Symbol) {
+	Point ans;
+	ans.x = x;
+	ans.y = y;
+	ans.Symbol = Symbol;
+	return ans;
+}
 Snake MakeSnake() {
-	Point* snake = (Point*)malloc(2 * sizeof(Point));
-	snake[0].x = 1;
-	snake[0].y = 1;
-	snake[0].Symbol = 46;
-	snake[1].x = 2;
-	snake[1].y = 1;
-	snake[1].Symbol = 88;
 	Snake ans;
-	ans.Body = snake;
 	ans.Size = 2;
+	Point* snake = malloc(ans.Size * sizeof(Point));
+	snake[0] = MakePoint(1, 1, 46);
+	snake[1] = MakePoint(2, 1, 88);
+	ans.Body = snake;
 	return ans;
 }
 Snake Move(Snake snake, Point New) {

@@ -2,10 +2,10 @@
 #include"Snake.h"
 #include"Random.h"
 #include"GameRule.h"
-#include<windows.h>
+#include<Windows.h>
 #include<stdio.h>
 int main() {
-	ShowCursor(FALSE);
+	hidecursor();
 	printf("Write size box, Number of String and Number of Column (this numbers >=10 and <=30)\n");
 	int NumberOfString;
 	int NumberOfColumn;
@@ -13,13 +13,20 @@ int main() {
 	printf("Write speed of snake (this numbers>=20 ans <=100\n");
 	int Time;
 	scanf_s("%d", &Time);
-	if (NumberOfString > 30 && NumberOfString < 10 || NumberOfColumn>30 && NumberOfColumn < 10 || Time>100 && Time < 20) {
+	printf("Write ProgrammSnake, Number 1 = StupidSnake, Number 2 = AdvancedSnake\n");
+	int NumberExc;
+	scanf_s("%d", &NumberExc);
+	if (NumberOfString > 30 && NumberOfString < 10 || NumberOfColumn>30 && NumberOfColumn < 10 || Time>100 && Time < 20 || NumberExc < 1 && NumberExc>2) {
 		printf("YOU LIE");
-		
 		return 0;
 	}
 	system("cls");
-	AdvancedBrainSnake(NumberOfString, NumberOfColumn, Time);
+	if (NumberExc == 1) {
+		StupidBrainSnake(NumberOfString, NumberOfColumn, Time);
+	}
+	if (NumberExc == 2) {
+		AdvancedBrainSnake(NumberOfString, NumberOfColumn, Time);
+	}
 	system("pause");
 	return 0;
 }

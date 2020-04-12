@@ -2,7 +2,14 @@
 #include"Snake.h"
 #include"Random.h"
 #include<stdio.h>
-#include<windows.h>
+#include<Windows.h>
+void hidecursor(){
+	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_CURSOR_INFO info;
+	info.dwSize = 100;
+	info.bVisible = FALSE;
+	SetConsoleCursorInfo(consoleHandle, &info);
+}
 Box MakeSnakeBox(int NumberString,int NumberColumn) {
 	int** box = (int**)malloc(NumberString * sizeof(int*));
 	for (int i = 0; i < NumberString; i++) {
@@ -31,7 +38,6 @@ void PrintSnakeBox(Box SnakeBox, int Time) {
 	COORD position;
 	position.X = 0;
 	position.Y = 0;
-	ShowCursor(FALSE);
 	SetConsoleCursorPosition(hConsole, position);
 	for (int i = 0; i < SnakeBox.NumberString; i++) {
 		for (int j = 0; j < SnakeBox.NumberColumn; j++) {
@@ -79,5 +85,22 @@ Box GameOver(Box SnakeBox) {
 	SnakeBox.Arr[4][4] = 'e';
 	SnakeBox.Arr[5][1] = 'U';
 	SnakeBox.Arr[5][2] = 'p';
+	return SnakeBox;
+}
+Box GameOver2(Box SnakeBox) {
+	SnakeBox.Arr[1][1] = 'G';
+	SnakeBox.Arr[1][2] = 'a';
+	SnakeBox.Arr[1][3] = 'm';
+	SnakeBox.Arr[1][4] = 'e';
+	SnakeBox.Arr[2][1] = 'O';
+	SnakeBox.Arr[2][2] = 'v';
+	SnakeBox.Arr[2][3] = 'e';
+	SnakeBox.Arr[3][1] = 'I';
+	SnakeBox.Arr[3][2] = 'I';
+	SnakeBox.Arr[4][1] = 'T';
+	SnakeBox.Arr[4][2] = 'i';
+	SnakeBox.Arr[4][3] = 'r';
+	SnakeBox.Arr[4][4] = 'e';
+	SnakeBox.Arr[4][5] = 'd';
 	return SnakeBox;
 }

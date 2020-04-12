@@ -93,12 +93,79 @@ int BrainMoveInBox(Box* box, Point New, int Time) {
 				Point P;
 				P.x = Head.x;
 				P.y = Head.y + Sy;
+				Point PP;
+				PP = FreePoint(*box, P);
+				if (PP.x == 0 && PP.y == 0) {
+
+				}
+				else {
+					*box = MoveSnakeInBox(*box, P);
+					PrintSnakeBox(*box, Time);
+					Head = box->snake.Body[box->snake.Size - 1];
+				}
+			}
+		}
+		if (box->Arr[Head.x + Sx][Head.y] != 46 && box->Arr[Head.x + Sx][Head.y] != 42) {
+			if (DifX != 0) {
+				Point P1;
+				P1.x = Head.x + Sx;
+				P1.y = Head.y;
+				Point PP;
+				PP = FreePoint(*box, P1);
+				if (PP.x == 0 && PP.y == 0) {
+
+				}
+				else {
+					*box = MoveSnakeInBox(*box, P1);
+					PrintSnakeBox(*box, Time);
+					Head = box->snake.Body[box->snake.Size - 1];
+				}
+			}
+		}
+	}
+	return ans;
+}
+void StupidMoveInBox(Box* box, Point New, int Time) {
+	while (1) {
+		Point Head = box->snake.Body[box->snake.Size - 1];
+		int DifX = New.x - Head.x;
+		int DifY = New.y - Head.y;
+		int Sy = 1;
+		int Sx = 1;
+		if (DifX < 0) {
+			Sx *= (-1);
+		}
+		if (DifY < 0) {
+			Sy *= (-1);
+		}
+		if (DifX == 0) {
+			Sx = 0;
+		}
+		if (DifY == 0) {
+			Sy = 0;
+		}
+		if (abs(DifX) == 1 && DifY == 0) {
+			*box = GroveSnakeInBox(*box, New);
+			PrintSnakeBox(*box, Time);
+			break;
+		}
+		if (DifX == 0 && abs(DifY) == 1) {
+			*box = GroveSnakeInBox(*box, New);
+			PrintSnakeBox(*box, Time);
+			break;
+		}
+		if (DifX == 0 && DifY == 0) break;
+		if (box->Arr[Head.x][Head.y + Sy] != 42) {
+			if (DifY != 0) {
+				Point P;
+				P.x = Head.x;
+				P.y = Head.y + Sy;
 				*box = MoveSnakeInBox(*box, P);
 				PrintSnakeBox(*box, Time);
 				Head = box->snake.Body[box->snake.Size - 1];
 			}
 		}
-		if (box->Arr[Head.x + Sx][Head.y] != 46 && box->Arr[Head.x + Sx][Head.y] != 42) {
+		if (box->Arr[Head.x + Sx][Head.y] != 42) {
 			if (DifX != 0) {
 				Point P1;
 				P1.x = Head.x + Sx;
@@ -109,9 +176,4 @@ int BrainMoveInBox(Box* box, Point New, int Time) {
 			}
 		}
 	}
-	return ans;
-}
-int StupidMoveInBox(Box* box, Point New, int Time) {
-
-
 }
