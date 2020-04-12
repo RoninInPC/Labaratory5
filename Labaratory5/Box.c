@@ -26,12 +26,12 @@ Box MakeSnakeBox(int NumberString,int NumberColumn) {
 	Ans.snake = MakeSnake();
 	return Ans;
 }
-void PrintSnakeBox(Box SnakeBox) {
-	ShowCursor(FALSE);
+void PrintSnakeBox(Box SnakeBox, int Time) {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	COORD position;
 	position.X = 0;
 	position.Y = 0;
+	ShowCursor(FALSE);
 	SetConsoleCursorPosition(hConsole, position);
 	for (int i = 0; i < SnakeBox.NumberString; i++) {
 		for (int j = 0; j < SnakeBox.NumberColumn; j++) {
@@ -39,6 +39,7 @@ void PrintSnakeBox(Box SnakeBox) {
 		}
 		printf("\n");
 	}
+	Sleep(Time);
 }
 Box SnakeInBox(Box SnakeBox) {
 	for (int i = 0; i < SnakeBox.snake.Size; i++) {
@@ -50,13 +51,11 @@ Box MoveSnakeInBox(Box SnakeBox, Point New) {
 	SnakeBox.Arr[SnakeBox.snake.Body[0].x][SnakeBox.snake.Body[0].y] = 32;
 	SnakeBox.snake = Move(SnakeBox.snake, New);
 	SnakeBox = SnakeInBox(SnakeBox);
-	PrintSnakeBox(SnakeBox);
 	return SnakeBox;
 }
 Box GroveSnakeInBox(Box SnakeBox, Point New) {
 	SnakeBox.snake = Grove(SnakeBox.snake, New);
 	SnakeBox = SnakeInBox(SnakeBox);
-	PrintSnakeBox(SnakeBox);
 	return SnakeBox;
 }
 Box MakeApplePenInBox(Box SnakeBox, Point New) {

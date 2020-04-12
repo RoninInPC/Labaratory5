@@ -30,6 +30,9 @@
     <ClCompile Include="Random.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Game.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h">
@@ -44,10 +47,8 @@
     <ClInclude Include="GameRule.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Release\Labaratory5.exe">
-      <Filter>Файлы ресурсов</Filter>
-    </None>
+    <ClInclude Include="Game.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

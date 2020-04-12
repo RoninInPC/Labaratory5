@@ -8,7 +8,7 @@ typedef struct box {
 	Snake snake;
 } Box;
 Box MakeSnakeBox(int NumberString, int NumberColumn);
-void PrintSnakeBox(Box SnakeBox);
+void PrintSnakeBox(Box SnakeBox, int Time);
 Box SnakeInBox(Box SnakeBox);
 Box MoveSnakeInBox(Box SnakeBox, Point New);
 Box GroveSnakeInBox(Box SnakeBox, Point New);

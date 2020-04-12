@@ -30,7 +30,7 @@ Point FreePoint(Box box, Point Head) {
 	}
 	return P;
 }
-int BrainMoveInBox(Box* box, Point New) {
+int BrainMoveInBox(Box* box, Point New, int Time) {
 	int ans = 1;
 	while (1) {
 		Point Head = box->snake.Body[box->snake.Size - 1];
@@ -57,7 +57,7 @@ int BrainMoveInBox(Box* box, Point New) {
 				break;
 			}
 			*box = MoveSnakeInBox(*box, FP);
-			Sleep(100);
+			PrintSnakeBox(*box, Time);
 		}
 		if (DifY == 0 && (box->Arr[Head.x + Sx][Head.y] == 46 || box->Arr[Head.x + Sx][Head.y] == 42)) {
 			Point FP = FreePoint(*box, box->snake.Body[box->snake.Size - 1]);
@@ -66,7 +66,7 @@ int BrainMoveInBox(Box* box, Point New) {
 				break;
 			}
 			*box = MoveSnakeInBox(*box, FP);
-			Sleep(100);
+			PrintSnakeBox(*box, Time);
 		}
 		if (DifX == 0 && (box->Arr[Head.x][Head.y + Sy] == 46 || box->Arr[Head.x][Head.y + Sy] == 42)) {
 			Point FP = FreePoint(*box, box->snake.Body[box->snake.Size - 1]);
@@ -75,16 +75,16 @@ int BrainMoveInBox(Box* box, Point New) {
 				break;
 			}
 			*box = MoveSnakeInBox(*box, FP);
-			Sleep(100);
+			PrintSnakeBox(*box, Time);
 		}
 		if (abs(DifX) == 1 && DifY == 0) {
 			*box = GroveSnakeInBox(*box, New);
-			Sleep(100);
+			PrintSnakeBox(*box, Time);
 			break;
 		}
 		if (DifX == 0 && abs(DifY) == 1) {
 			*box = GroveSnakeInBox(*box, New);
-			Sleep(100);
+			PrintSnakeBox(*box, Time);
 			break;
 		}
 		if (DifX == 0 && DifY == 0) break;
@@ -94,7 +94,7 @@ int BrainMoveInBox(Box* box, Point New) {
 				P.x = Head.x;
 				P.y = Head.y + Sy;
 				*box = MoveSnakeInBox(*box, P);
-				Sleep(100);
+				PrintSnakeBox(*box, Time);
 				Head = box->snake.Body[box->snake.Size - 1];
 			}
 		}
@@ -104,10 +104,14 @@ int BrainMoveInBox(Box* box, Point New) {
 				P1.x = Head.x + Sx;
 				P1.y = Head.y;
 				*box = MoveSnakeInBox(*box, P1);
-				Sleep(100);
+				PrintSnakeBox(*box, Time);
 				Head = box->snake.Body[box->snake.Size - 1];
 			}
 		}
 	}
 	return ans;
+}
+int StupidMoveInBox(Box* box, Point New, int Time) {
+
+
 }

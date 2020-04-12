@@ -139,6 +139,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Box.c" />
+    <ClCompile Include="Game.c" />
     <ClCompile Include="GameRule.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="Random.c" />
@@ -146,12 +147,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="GameRule.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Snake.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Release\Labaratory5.exe" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

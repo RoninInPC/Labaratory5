@@ -3,23 +3,23 @@
 #include"Random.h"
 #include"GameRule.h"
 #include<windows.h>
+#include<stdio.h>
 int main() {
-	Box SnakeBox = MakeSnakeBox(20, 20);
-	PrintSnakeBox(SnakeBox);
-	Sleep(100);
-	SnakeBox = SnakeInBox(SnakeBox);
-	PrintSnakeBox(SnakeBox);
-	Sleep(100);
-	Point NewApple;
-	while (1) {
-		NewApple = MakeRandomNotSnakePoint(SnakeBox);
-		SnakeBox = MakeApplePenInBox(SnakeBox, NewApple);
-		PrintSnakeBox(SnakeBox);
-		Sleep(100);
-		int t = BrainMoveInBox(&SnakeBox, NewApple);
-		if (t == 0) break;
+	ShowCursor(FALSE);
+	printf("Write size box, Number of String and Number of Column (this numbers >=10 and <=30)\n");
+	int NumberOfString;
+	int NumberOfColumn;
+	scanf_s("%d %d", &NumberOfString, &NumberOfColumn);
+	printf("Write speed of snake (this numbers>=20 ans <=100\n");
+	int Time;
+	scanf_s("%d", &Time);
+	if (NumberOfString > 30 && NumberOfString < 10 || NumberOfColumn>30 && NumberOfColumn < 10 || Time>100 && Time < 20) {
+		printf("YOU LIE");
+		
+		return 0;
 	}
-	SnakeBox = GameOver(SnakeBox);
-	PrintSnakeBox(SnakeBox);
+	system("cls");
+	AdvancedBrainSnake(NumberOfString, NumberOfColumn, Time);
+	system("pause");
 	return 0;
 }
