@@ -16,4 +16,5 @@ Box GroveSnakeInBox(Box SnakeBox, Point New);
 Box MakeApplePenInBox(Box SnakeBox, Point New);
 Box GameOver(Box SnakeBox);
 Box GameOver2(Box SnakeBox);
+Box GameOver3(Box SnakeBox);
 #endif

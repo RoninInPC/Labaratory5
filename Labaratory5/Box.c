@@ -2,6 +2,7 @@
 #include"Snake.h"
 #include"Random.h"
 #include<stdio.h>
+#include<stdlib.h>
 #include<Windows.h>
 void hidecursor(){
 	HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -103,5 +104,23 @@ Box GameOver2(Box SnakeBox) {
 	SnakeBox.Arr[4][3] = 'r';
 	SnakeBox.Arr[4][4] = 'e';
 	SnakeBox.Arr[4][5] = 'd';
+	return SnakeBox;
+}
+Box GameOver3(Box SnakeBox) {
+	SnakeBox.Arr[1][1] = 'G';
+	SnakeBox.Arr[1][2] = 'a';
+	SnakeBox.Arr[1][3] = 'm';
+	SnakeBox.Arr[1][4] = 'e';
+	SnakeBox.Arr[2][1] = 'O';
+	SnakeBox.Arr[2][2] = 'v';
+	SnakeBox.Arr[2][3] = 'e';
+	SnakeBox.Arr[2][4] = 'r';
+	SnakeBox.Arr[3][1] = 'Y';
+	SnakeBox.Arr[3][2] = 'o';
+	SnakeBox.Arr[3][3] = 'u';
+	SnakeBox.Arr[4][1] = 'L';
+	SnakeBox.Arr[4][2] = 'o';
+	SnakeBox.Arr[4][3] = 's';
+	SnakeBox.Arr[4][4] = 'e';
 	return SnakeBox;
 }

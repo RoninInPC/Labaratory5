@@ -1,6 +1,7 @@
 #include "Snake.h"
 #include "Box.h"
 #include<time.h>
+#include<stdlib.h>
 Point MakeRandomNotSnakePoint(Box box) {
 	srand(box.snake.Size*time(NULL));
 	Point point;

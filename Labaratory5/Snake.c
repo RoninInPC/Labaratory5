@@ -1,4 +1,5 @@
 #include "Snake.h"
+#include<stdlib.h>
 Point MakePoint(int x, int y, int Symbol) {
 	Point ans;
 	ans.x = x;

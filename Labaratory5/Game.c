@@ -4,6 +4,7 @@
 #include"Snake.h"
 #include<Windows.h>
 #include<stdio.h>
+#include <conio.h>
 void AdvancedBrainSnake(int NumberOfString, int NumberOfColumn, int Time) {
 	Box SnakeBox = MakeSnakeBox(NumberOfString, NumberOfColumn);
 	PrintSnakeBox(SnakeBox, Time);
@@ -42,5 +43,23 @@ void StupidBrainSnake(int NumberOfString, int NumberOfColumn, int Time) {
 		}
 	}
 	SnakeBox = GameOver2(SnakeBox);
+	PrintSnakeBox(SnakeBox, Time);
+}
+void UserPlaySnake(int NumberOfString, int NumberOfColumn, int Time) {
+	Box SnakeBox = MakeSnakeBox(NumberOfString, NumberOfColumn);
+	PrintSnakeBox(SnakeBox, Time);
+	SnakeBox = SnakeInBox(SnakeBox);
+	PrintSnakeBox(SnakeBox, Time);
+	Time *= 3;
+	Point NewApple;
+	int MoveIndex = 0;
+	while (1) {
+		NewApple = MakeRandomNotSnakePoint(SnakeBox);
+		SnakeBox = MakeApplePenInBox(SnakeBox, NewApple);
+		PrintSnakeBox(SnakeBox, Time);
+		MoveIndex = KeyMove(&SnakeBox, NewApple, Time, MoveIndex);
+		if (MoveIndex == -1)break;
+	}
+	SnakeBox = GameOver3(SnakeBox);
 	PrintSnakeBox(SnakeBox, Time);
 }
