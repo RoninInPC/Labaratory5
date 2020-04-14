@@ -6,6 +6,7 @@ typedef struct box {
 	int NumberString;
 	int NumberColumn;
 	Snake snake;
+	Snake snake2;
 	Point** Barriers;
 } Box;
 void hidecursor();

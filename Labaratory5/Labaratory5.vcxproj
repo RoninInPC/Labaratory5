@@ -145,6 +145,7 @@
     <ClCompile Include="main.c" />
     <ClCompile Include="Random.c" />
     <ClCompile Include="Snake.c" />
+    <ClCompile Include="TwoSnakeBox.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Barrier.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="GameRule.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Snake.h" />
+    <ClInclude Include="TwoSnakeBox.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

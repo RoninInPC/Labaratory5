@@ -2,6 +2,7 @@
 #include"GameRule.h"
 #include"Random.h"
 #include"Snake.h"
+#include"TwoSnakeBox.h"
 #include<Windows.h>
 #include<stdio.h>
 #include <conio.h>
@@ -9,7 +10,6 @@ void AdvancedBrainSnake(int NumberOfString, int NumberOfColumn, int Time) {
 	Box SnakeBox = MakeSnakeBox(NumberOfString, NumberOfColumn);
 	PrintSnakeBox(SnakeBox, Time);
 	SnakeBox = SnakeInBox(SnakeBox);
-	SnakeBox = MakeBarrierInBox(SnakeBox);
 	PrintSnakeBox(SnakeBox, Time);
 	Point NewApple;
 	while (1) {
@@ -89,5 +89,28 @@ void AdvancedBrainSnakeAndBarrier(int NumberOfString, int NumberOfColumn, int Ti
 		if (BarriersNum == 1) SnakeBox = DeleteBarrierInBox(SnakeBox);
 	}
 	SnakeBox = GameOver(SnakeBox);
+	PrintSnakeBox(SnakeBox, Time);
+}
+void TwoAdvancedBrainSnake(int NumberOfString, int NumberOfColumn, int Time) {
+	Box SnakeBox = MakeTwoSnakeBox(NumberOfString, NumberOfColumn);
+	PrintSnakeBox(SnakeBox, Time);
+	SnakeBox = SnakeInBox(SnakeBox);
+	SnakeBox = SecondSnakeInBox(SnakeBox);
+	PrintSnakeBox(SnakeBox, Time);
+	Point NewApple;
+	int t = 0;
+	while (1) {
+		NewApple = MakeRandomNotSnakePoint(SnakeBox, 1);
+		SnakeBox = MakeApplePenInBox(SnakeBox, NewApple);
+		PrintSnakeBox(SnakeBox, Time);
+		t = BrainMoveTwoSnakeInBox(&SnakeBox, NewApple, Time);
+		if (t <= 0) break;
+	}
+	if (t == 0) {
+		SnakeBox = GameOverFirstSnake(SnakeBox);
+	}
+	if (t == -1) {
+		SnakeBox = GameOverSecondSnake(SnakeBox);
+	}
 	PrintSnakeBox(SnakeBox, Time);
 }

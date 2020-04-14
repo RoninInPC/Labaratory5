@@ -16,6 +16,15 @@ Snake MakeSnake() {
 	ans.Body = snake;
 	return ans;
 }
+Snake MakeSnake2(int NumberOfString, int NumberOfColumn) {
+	Snake ans;
+	ans.Size = 2;
+	Point* snake = malloc(ans.Size * sizeof(Point));
+	snake[0] = MakePoint(NumberOfString - 2, NumberOfColumn - 2, 46);
+	snake[1] = MakePoint(NumberOfString - 3, NumberOfColumn - 2, 88);
+	ans.Body = snake;
+	return ans;
+}
 Snake Move(Snake snake, Point New) {
 	for (int i = 0; i < snake.Size - 1; i++) {
 		snake.Body[i] = snake.Body[i + 1];

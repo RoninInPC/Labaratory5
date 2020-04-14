@@ -5,4 +5,5 @@
 int BrainMoveInBox(Box* box, Point New, int Time);
 void StupidMoveInBox(Box* box, Point New, int Time);
 int KeyMove(Box* box, Point New, int Time, int MoveIndex);
+int BrainMoveTwoSnakeInBox(Box* box, Point New, int Time);
 #endif
