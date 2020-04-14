@@ -14,10 +14,10 @@ int main() {
 	printf("Write speed of snake (this numbers >=20 ans <= 100)\n");
 	int Time;
 	scanf_s("%d", &Time);
-	printf("Write ProgrammSnake, Number 1 = StupidSnake, Number 2 = AdvancedSnake, Number 3 = UserSnake, Number 4 = AdvancedBrainSnakeAndBarrier, Number 5 = TwoAdvancedBrainSnake\n");
+	printf("Write ProgrammSnake, Number 1 = StupidSnake, Number 2 = AdvancedSnake, Number 3 = UserSnake, Number 4 = AdvancedBrainSnakeAndBarrier, Number 5 = TwoAdvancedBrainSnake, Number 6 = TwoAdvancedBrainSnakeAndBarriers\n");
 	int NumberExc;
 	scanf_s("%d", &NumberExc);
-	if (NumberOfString > 30 && NumberOfString < 10 || NumberOfColumn>30 && NumberOfColumn < 10 || Time>100 && Time < 20 || NumberExc < 1 && NumberExc>5) {
+	if (NumberOfString > 30 && NumberOfString < 10 || NumberOfColumn>30 && NumberOfColumn < 10 || Time>100 && Time < 20 || NumberExc < 1 && NumberExc>6) {
 		printf("YOU LIE");
 		return 0;
 	}
@@ -36,6 +36,9 @@ int main() {
 	}
 	if (NumberExc == 5) {
 		TwoAdvancedBrainSnake(NumberOfString, NumberOfColumn, Time);
+	}
+	if (NumberExc == 6) {
+		TwoAdvancedBrainSnakeAndBarriers(NumberOfString, NumberOfColumn, Time);
 	}
 	system("pause");
 	return 0;

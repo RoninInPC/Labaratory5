@@ -5,4 +5,5 @@ void AdvancedBrainSnakeAndBarrier(int NumberOfString, int NumberOfColumn, int Ti
 void StupidBrainSnake(int NumberOfString, int NumberOfColumn, int Time);
 void UserPlaySnake(int NumberOfString, int NumberOfColumn, int Time);
 void TwoAdvancedBrainSnake(int NumberOfString, int NumberOfColumn, int Time);
+void TwoAdvancedBrainSnakeAndBarriers(int NumberOfString, int NumberOfColumn, int Time);
 #endif

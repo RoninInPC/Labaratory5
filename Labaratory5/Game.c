@@ -114,3 +114,37 @@ void TwoAdvancedBrainSnake(int NumberOfString, int NumberOfColumn, int Time) {
 	}
 	PrintSnakeBox(SnakeBox, Time);
 }
+void TwoAdvancedBrainSnakeAndBarriers(int NumberOfString, int NumberOfColumn, int Time) {
+	printf("Write number, number 1 - barriers generated every generated Apple, 2 - static one Barrier\n");
+	int BarriersNum;
+	scanf_s("%d", &BarriersNum);
+	if (BarriersNum < 1 && BarriersNum > 3) {
+		printf("YOU LIE\n");
+		return 0;
+	}
+	system("cls");
+	Box SnakeBox = MakeTwoSnakeBox(NumberOfString, NumberOfColumn);
+	PrintSnakeBox(SnakeBox, Time);
+	SnakeBox = SnakeInBox(SnakeBox);
+	SnakeBox = SecondSnakeInBox(SnakeBox);
+	if (BarriersNum == 2)	SnakeBox = MakeBarrierInBox(SnakeBox);
+	PrintSnakeBox(SnakeBox, Time);
+	Point NewApple;
+	int t = 0;
+	while (1) {
+		NewApple = MakeRandomNotSnakePoint(SnakeBox, 1);
+		SnakeBox = MakeApplePenInBox(SnakeBox, NewApple);
+		if (BarriersNum == 1)	SnakeBox = MakeBarrierInBox(SnakeBox);
+		PrintSnakeBox(SnakeBox, Time);
+		t = BrainMoveTwoSnakeInBox(&SnakeBox, NewApple, Time);
+		if (t <= 0) break;
+		if (BarriersNum == 1) SnakeBox = DeleteBarrierInBox(SnakeBox);
+	}
+	if (t == 0) {
+		SnakeBox = GameOverFirstSnake(SnakeBox);
+	}
+	if (t == -1) {
+		SnakeBox = GameOverSecondSnake(SnakeBox);
+	}
+	PrintSnakeBox(SnakeBox, Time);
+}
