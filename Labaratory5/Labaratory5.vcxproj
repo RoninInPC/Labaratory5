@@ -138,6 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Barrier.c" />
     <ClCompile Include="Box.c" />
     <ClCompile Include="Game.c" />
     <ClCompile Include="GameRule.c" />
@@ -146,6 +147,7 @@
     <ClCompile Include="Snake.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Barrier.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameRule.h" />

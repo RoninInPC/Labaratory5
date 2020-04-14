@@ -2,8 +2,8 @@
 #include "Box.h"
 #include<time.h>
 #include<stdlib.h>
-Point MakeRandomNotSnakePoint(Box box) {
-	srand(box.snake.Size*time(NULL));
+Point MakeRandomNotSnakePoint(Box box,int n) {
+	srand(box.snake.Size*n*time(NULL));
 	Point point;
 	while (1) {
 		point.x = rand() % box.NumberString;

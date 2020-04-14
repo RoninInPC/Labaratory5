@@ -1,6 +1,7 @@
 #include"Box.h"
 #include"Snake.h"
 #include"Random.h"
+#include"Barrier.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include<Windows.h>
@@ -67,6 +68,31 @@ Box GroveSnakeInBox(Box SnakeBox, Point New) {
 }
 Box MakeApplePenInBox(Box SnakeBox, Point New) {
 	SnakeBox.Arr[New.x][New.y] = New.Symbol;
+	return SnakeBox;
+}
+Box MakeBarrierInBox(Box SnakeBox) {
+	SnakeBox.Barriers = MakeBarriers(SnakeBox);
+	int X = (SnakeBox.NumberColumn * SnakeBox.NumberString) / 200 + 1;
+	int Y = (SnakeBox.NumberColumn * SnakeBox.NumberString) / 200 + 1;
+	for (int i = 0; i < X; i++) {
+		for (int j = 0; j < Y; j++) {
+			if (SnakeBox.Arr[SnakeBox.Barriers[i][j].x][SnakeBox.Barriers[i][j].y] == 32) {
+				SnakeBox.Arr[SnakeBox.Barriers[i][j].x][SnakeBox.Barriers[i][j].y] = 42;
+			}
+		}
+	}
+	return SnakeBox;
+}
+Box DeleteBarrierInBox(Box SnakeBox) {
+	int X = (SnakeBox.NumberColumn * SnakeBox.NumberString) / 200 + 1;
+	int Y = (SnakeBox.NumberColumn * SnakeBox.NumberString) / 200 + 1;
+	for (int i = 0; i < X; i++) {
+		for (int j = 0; j < Y; j++) {
+			if (SnakeBox.Arr[SnakeBox.Barriers[i][j].x][SnakeBox.Barriers[i][j].y] == 42 && SnakeBox.Barriers[i][j].x != 0 && SnakeBox.Barriers[i][j].x != SnakeBox.NumberString - 1) {
+				SnakeBox.Arr[SnakeBox.Barriers[i][j].x][SnakeBox.Barriers[i][j].y] = 32;
+			}
+		}
+	}
 	return SnakeBox;
 }
 Box GameOver(Box SnakeBox) {
