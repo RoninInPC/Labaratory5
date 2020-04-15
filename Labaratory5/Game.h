@@ -1,5 +1,6 @@
 #ifndef H_GAME
 #define H_GAME
+int GameLevelComplexity(int* Time, int* MoveIndex);
 void AdvancedBrainSnake(int NumberOfString, int NumberOfColumn, int Time);
 void AdvancedBrainSnakeAndBarrier(int NumberOfString, int NumberOfColumn, int Time);
 void StupidBrainSnake(int NumberOfString, int NumberOfColumn, int Time);

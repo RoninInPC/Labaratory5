@@ -5,7 +5,53 @@
 #include"TwoSnakeBox.h"
 #include<Windows.h>
 #include<stdio.h>
+#include<stdlib.h>
 #include <conio.h>
+int GameLevelComplexity(int* Time, int* MoveIndex) {
+	printf("Choose Level Of Complexity, print 1 2 or 3\n");
+	int LC;
+	scanf_s("%d", &LC);
+	system("cls");
+	if (LC < 1 || LC>3) {
+		for (int i = 0; i < 100; i++) {
+			if (i % 2 == 0) {
+				printf("YOU LIE, I CHOOSE YOUR DESTINY!\n");
+				printf("******\n");
+				printf("*0**0*\n");
+				printf("******\n");
+				printf(" *##* \n");
+				printf(" **** \n");
+				printf("      \n");
+			}
+			else
+			{
+				printf("YOU LIE, I CHOOSE YOUR DESTINY!\n");
+				printf("******\n");
+				printf("*1**1*\n");
+				printf("******\n");
+				printf(" *##* \n");
+				printf(" *##* \n");
+				printf(" **** \n");
+			}
+			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+			COORD position;
+			position.X = 0;
+			position.Y = 0;
+			SetConsoleCursorPosition(hConsole, position);
+			Sleep(50);
+		}
+		LC = 3;
+		Sleep(*Time * 10);
+		*Time /= 3;
+		*MoveIndex = 3;
+		system("cls");
+	}
+	if (LC > 0 && LC < 4) {
+		*Time *= 10;
+		*Time /= 15;
+	}
+	return LC;
+}
 void AdvancedBrainSnake(int NumberOfString, int NumberOfColumn, int Time) {
 	Box SnakeBox = MakeSnakeBox(NumberOfString, NumberOfColumn);
 	PrintSnakeBox(SnakeBox, Time);
@@ -47,19 +93,23 @@ void StupidBrainSnake(int NumberOfString, int NumberOfColumn, int Time) {
 	PrintSnakeBox(SnakeBox, Time);
 }
 void UserPlaySnake(int NumberOfString, int NumberOfColumn, int Time) {
+	Time *= 2;
+	int MoveIndex = 0;
+	int HardIndex = GameLevelComplexity(&Time, &MoveIndex);
 	Box SnakeBox = MakeSnakeBox(NumberOfString, NumberOfColumn);
 	PrintSnakeBox(SnakeBox, Time);
 	SnakeBox = SnakeInBox(SnakeBox);
 	PrintSnakeBox(SnakeBox, Time);
-	Time *= 3;
+	if(HardIndex == 2) SnakeBox = MakeBarrierInBox(SnakeBox);
 	Point NewApple;
-	int MoveIndex = 0;
 	while (1) {
 		NewApple = MakeRandomNotSnakePoint(SnakeBox, 1);
 		SnakeBox = MakeApplePenInBox(SnakeBox, NewApple);
+		if (HardIndex == 3) SnakeBox = MakeBarrierInBox(SnakeBox);
 		PrintSnakeBox(SnakeBox, Time);
 		MoveIndex = KeyMove(&SnakeBox, NewApple, Time, MoveIndex);
 		if (MoveIndex == -1)break;
+		if (HardIndex == 3) SnakeBox = DeleteBarrierInBox(SnakeBox);
 	}
 	SnakeBox = GameOver3(SnakeBox);
 	PrintSnakeBox(SnakeBox, Time);
